@@ -9,12 +9,18 @@ using namespace System;
 bool ParseInput(String ^input, String ^&a, String ^&b);
 void calc(Char a, Char b, Char m, Char &T, Char &S);
 int const BASE_VAL = 48;
-
+int const ENTER = 13;
+int const NUMBER_BEGIN = 48;
+int const NUMBER_END = 57;
+int const SPACE = 32;
+void ReadInput();
+bool IsNumber(int x);
 
 
 int main(array<System::String ^> ^args)
 {
-	String ^inputData = Console::ReadLine();
+	ReadInput();
+	String ^inputData = "";// Console::ReadLine();
 	String ^a, ^b;
 	if (ParseInput(inputData, a, b))
 	{
@@ -34,6 +40,30 @@ int main(array<System::String ^> ^args)
 	return 0;
 }
 
+void ReadInput()
+{
+	char a[16], b[16];
+	while (true)
+	{
+		
+		int x= Console::Read();
+		if (x = ENTER)
+		{
+			break;
+		}
+		else
+		{
+			if (IsNumber(x))
+			{
+
+			}
+			else
+			{
+			}
+		}
+	}
+}
+
 bool ParseInput(String ^input, String ^&a, String ^&b)
 {
 	a = "123";
@@ -48,4 +78,9 @@ void calc(Char a, Char b, Char m, Char &T,Char &S)
 	int s = x % 10;
 	T = t + BASE_VAL;
 	S = s + BASE_VAL;
+}
+
+bool IsNumber(int x)
+{
+	return x >= NUMBER_BEGIN && x <= NUMBER_END;
 }
